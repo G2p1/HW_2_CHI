@@ -95,6 +95,35 @@ namespace HW_2
             }
             Console.WriteLine(maxPage);
         }
+
+        public void CarSpeed()
+        {
+            Random rnd = new Random();
+            double[] carSpeed = new double[40];
+            
+            for(int i = 0; i < 40; i++)
+            {
+                carSpeed[i] = rnd.Next(30, 320);
+            }
+
+            int maxCarSpeedIndex = 0, maxEndCarSpeedIndex = -1;
+            double maxSpeed = carSpeed[0];
+
+            for(int i = 1; i < 40; i++)
+            {
+                if (carSpeed[i] > maxSpeed)
+                {
+                    maxSpeed = carSpeed[i];
+                    maxCarSpeedIndex = i;
+                }
+
+                if(carSpeed[i] == maxSpeed)
+                {
+                    maxEndCarSpeedIndex = i;
+                }
+            }
+
+        }
     }
 
     class Program
@@ -104,11 +133,17 @@ namespace HW_2
             StringManipulator sManipulator = new StringManipulator();
             ArrayManipulator aManipulator = new ArrayManipulator();
 
-         //   sManipulator.operationNumberInString(Console.ReadLine());
+            //Task1
+            sManipulator.operationNumberInString(Console.ReadLine());
         
-//            sManipulator.indexMaxNumberInString(Console.ReadLine().ToCharArray());
-
+            //Task2
+            sManipulator.indexMaxNumberInString(Console.ReadLine().ToCharArray());
+            
+            //Task3
             aManipulator.bookPages();
+
+            //Task4
+            aManipulator.CarSpeed();
         }
     }
 }
