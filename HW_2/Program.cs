@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HW_2
 {
-    class StringManipulator
+    class StringNumberFinder
     {
         public void operationNumberInString(string inputString)
         {
@@ -34,13 +34,18 @@ namespace HW_2
             Console.WriteLine(maxInString);
         }
 
+        
+    }
+
+    class StringIndexFinder
+    {
         public void indexMaxNumberInString(char[] inputString)
         {
             bool isStart = false;
             bool isStartIndexFind = true;
-            int startIndex=0;
-            int maxDigit=0;
-            int maxIndex=0;
+            int startIndex = 0;
+            int maxDigit = 0;
+            int maxIndex = 0;
 
 
             for (int i = 0; i < inputString.Length; i++)
@@ -51,18 +56,18 @@ namespace HW_2
                     if (isStartIndexFind)
                     {
 
-                        startIndex = i+1;
+                        startIndex = i + 1;
 
                         isStartIndexFind = false;
                     }
                 }
 
-                
+
                 if (isStart)
                 {
                     int digit;
                     int.TryParse(inputString[i].ToString(), out digit);
-                    if(maxDigit < digit)
+                    if (maxDigit < digit)
                     {
                         maxDigit = digit;
                         maxIndex = i;
@@ -73,7 +78,7 @@ namespace HW_2
         }
     }
 
-    class ArrayManipulator
+    class Library
     {
         public void bookPages()
         {
@@ -96,12 +101,17 @@ namespace HW_2
             Console.WriteLine(maxPage);
         }
 
+        
+    }
+
+    class CarSalon
+    {
         public void CarSpeed()
         {
             Random rnd = new Random();
             double[] carSpeed = new double[40];
-            
-            for(int i = 0; i < 40; i++)
+
+            for (int i = 0; i < 40; i++)
             {
                 carSpeed[i] = rnd.Next(30, 320);
             }
@@ -109,7 +119,7 @@ namespace HW_2
             int maxCarSpeedIndex = 0, maxEndCarSpeedIndex = -1;
             double maxSpeed = carSpeed[0];
 
-            for(int i = 1; i < 40; i++)
+            for (int i = 1; i < 40; i++)
             {
                 if (carSpeed[i] > maxSpeed)
                 {
@@ -117,7 +127,7 @@ namespace HW_2
                     maxCarSpeedIndex = i;
                 }
 
-                if(carSpeed[i] == maxSpeed)
+                if (carSpeed[i] == maxSpeed)
                 {
                     maxEndCarSpeedIndex = i;
                 }
@@ -130,20 +140,22 @@ namespace HW_2
     {
         static void Main(string[] args)
         {
-            StringManipulator sManipulator = new StringManipulator();
-            ArrayManipulator aManipulator = new ArrayManipulator();
+            StringNumberFinder sNumberFinder = new StringNumberFinder();
+            StringIndexFinder sIndexFinder = new StringIndexFinder();
+            Library libraryBooks = new Library();
+            CarSalon carSalon = new CarSalon();
 
             //Task1
-            sManipulator.operationNumberInString(Console.ReadLine());
+            sNumberFinder.operationNumberInString(Console.ReadLine());
         
             //Task2
-            sManipulator.indexMaxNumberInString(Console.ReadLine().ToCharArray());
+            sIndexFinder.indexMaxNumberInString(Console.ReadLine().ToCharArray());
             
             //Task3
-            aManipulator.bookPages();
+            libraryBooks.bookPages();
 
             //Task4
-            aManipulator.CarSpeed();
+            carSalon.CarSpeed();
         }
     }
 }
